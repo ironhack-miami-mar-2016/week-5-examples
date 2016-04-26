@@ -45,6 +45,18 @@ $(document).on("ready", function () {
     });
   });
 
+  $(".js-stop-link").on("click", function (event) {
+    event.preventDefault();
+
+    alert("Did you you want to visit Wookiepedia? Nope.");
+  });
+
+  $(".js-submit-button").on("click", function (blah) {
+    blah.preventDefault();
+
+    alert("FORM SUBMITTED");
+  });
+
 });
 
 
