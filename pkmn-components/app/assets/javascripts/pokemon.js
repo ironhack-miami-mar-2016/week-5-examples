@@ -18,6 +18,19 @@ PokemonApp.Pokemon.prototype.render = function () {
       $(".js-pkmn-height").text(response.height);
       $(".js-pkmn-weight").text(response.weight);
 
+      $(".js-pkmn-hp").text(response.hp);
+      $(".js-pkmn-attack").text(response.attack);
+      $(".js-pkmn-defense").text(response.defense);
+      $(".js-pkmn-sp-attack").text(response.sp_atk);
+      $(".js-pkmn-sp-defense").text(response.sp_def);
+      $(".js-pkmn-speed").text(response.speed);
+
+      $(".js-pkmn-types").empty();
+
+      response.types.forEach(function (theType) {
+        $(".js-pkmn-types").append(`<li>${theType.name}</li>`);
+      });
+
       $(".js-pkmn-modal").modal("show");
     },
 
