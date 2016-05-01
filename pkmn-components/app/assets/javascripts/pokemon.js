@@ -32,6 +32,9 @@ PokemonApp.Pokemon.prototype.render = function () {
       });
 
       $(".js-pkmn-modal").modal("show");
+
+      // Setup evolutions button for evolutions component
+      PokemonApp.PokemonEvolutions.setupButton( response.name, response.evolutions );
     },
 
     error: function (error) {
