@@ -27,6 +27,8 @@ PokemonApp.PokemonEvolutions.prototype.render = function () {
           </li>`;
 
         $(".js-ev-list").append(html);
+
+        PokemonApp.PokemonEvolutions.renderSprite( response.pkdx_id, response.sprites[0].resource_uri );
       },
 
       error: function (error) {
@@ -46,6 +48,22 @@ PokemonApp.PokemonEvolutions.setupButton = function (pokemonName, evolutionList)
   $(".js-show-evolutions")
     .data("pkmn-name", pokemonName)
     .data("evolution-ids", evolutionUrls.join(","));
+};
+
+PokemonApp.PokemonEvolutions.renderSprite = function (pokemonId, spriteUrl) {
+  $.ajax({
+    url: spriteUrl,
+
+    success: function (response) {
+      console.log(`Got sprite ${spriteUrl}`);
+      console.log(response);
+      $(`.js-ev-li-${pokemonId}`).append(`<img src="http://pokeapi.co${response.image}">`);
+    },
+
+    error: function () {
+      alert(`Error getting sprite: ${spriteUrl}`);
+    }
+  });
 };
 
 
