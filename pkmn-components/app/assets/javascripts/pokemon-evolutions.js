@@ -41,13 +41,19 @@ PokemonApp.PokemonEvolutions.prototype.render = function () {
 };
 
 PokemonApp.PokemonEvolutions.setupButton = function (pokemonName, evolutionList) {
-  var evolutionUrls = evolutionList.map(function (evo) {
-    return evo.resource_uri;
-  });
+  if (evolutionList.length === 0) {
+      $(".js-show-evolutions").hide();
+  }
+  else {
+    var evolutionUrls = evolutionList.map(function (evo) {
+      return evo.resource_uri;
+    });
 
-  $(".js-show-evolutions")
-    .data("pkmn-name", pokemonName)
-    .data("evolution-ids", evolutionUrls.join(","));
+    $(".js-show-evolutions")
+      .data("pkmn-name", pokemonName)
+      .data("evolution-ids", evolutionUrls.join(","))
+      .show();
+  }
 };
 
 PokemonApp.PokemonEvolutions.renderSprite = function (pokemonId, spriteUrl) {
