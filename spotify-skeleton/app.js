@@ -4,6 +4,7 @@ $(document).on("ready", function () {
 
   $(".js-search-btn").on("click", onSearch);
   $(".js-player-btn").on("click", playOrPause);
+  $(".js-player-audio").on("timeupdate", updateProgressBar);
 
 });
 
@@ -50,4 +51,10 @@ function playOrPause () {
   else {
     $(".js-player-audio").trigger("pause");
   }
+}
+
+
+function updateProgressBar () {
+  var currentTime = $(".js-player-audio").prop("currentTime");
+  $(".js-player-bar").prop("value", currentTime);
 }
